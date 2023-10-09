@@ -14,7 +14,6 @@ dependencies {
 
 
 detekt {
-//    config.setFrom("${projectDir}/src/main/resources/detekt-config.yml")
     config.from(resources.text.fromArchiveEntry(detektConfig, "detekt-config.yml"))
     parallel = true
     ignoreFailures = false
