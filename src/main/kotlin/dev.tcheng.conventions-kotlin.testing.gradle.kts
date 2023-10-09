@@ -1,11 +1,4 @@
-package dev.tcheng.conventions.kotlin
-
-import gradle.kotlin.dsl.accessors._6b44df4e710766fa51b9f600af186838.testing
-import org.gradle.api.attributes.TestSuiteType
 import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.gradle.kotlin.dsl.getting
-import org.gradle.kotlin.dsl.`jvm-test-suite`
-import org.gradle.kotlin.dsl.registering
 
 plugins {
     `jvm-test-suite`

@@ -1,6 +1,3 @@
-package dev.tcheng.conventions.kotlin
-
-import org.gradle.kotlin.dsl.withType
 import org.jetbrains.dokka.DokkaConfiguration.Visibility
 import org.jetbrains.dokka.gradle.DokkaTask
 

@@ -1,6 +1,3 @@
-package dev.tcheng.conventions.kotlin
-
-import gradle.kotlin.dsl.accessors._5ac7912a8f9b21663d15b5aac980482f.koverReport
 import kotlinx.kover.gradle.plugin.dsl.AggregationType
 import kotlinx.kover.gradle.plugin.dsl.GroupingEntityType
 import kotlinx.kover.gradle.plugin.dsl.MetricType

@@ -1,22 +1,21 @@
-package dev.tcheng.conventions.kotlin
-
-import gradle.kotlin.dsl.accessors._6b1cdd1e881959619ea23cf7941079a9.detekt
-import gradle.kotlin.dsl.accessors._6b1cdd1e881959619ea23cf7941079a9.detektPlugins
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
-import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.withType
 
 plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
+val detektConfig by configurations.creating
+
 dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.1")
+    detektConfig("dev.tcheng:detekt-config:0.0.1")
 }
 
+
 detekt {
-    config.setFrom("${rootDir}/buildSrc/src/main/resources/detekt-config.yml")
+//    config.setFrom("${projectDir}/src/main/resources/detekt-config.yml")
+    config.from(resources.text.fromArchiveEntry(detektConfig, "detekt-config.yml"))
     parallel = true
     ignoreFailures = false
     autoCorrect = true
