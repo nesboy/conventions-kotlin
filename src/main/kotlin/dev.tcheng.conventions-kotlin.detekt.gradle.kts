@@ -8,13 +8,11 @@ plugins {
 val detektConfig by configurations.creating
 
 dependencies {
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.1")
-    detektConfig("dev.tcheng:detekt-config:0.0.1")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
 }
 
 
 detekt {
-    config.from(resources.text.fromArchiveEntry(detektConfig, "detekt-config.yml"))
     parallel = true
     ignoreFailures = false
     autoCorrect = true
@@ -23,14 +21,10 @@ detekt {
 tasks.withType<Detekt>().configureEach {
     reports {
         html.required.set(true)
-        txt.required.set(false)
-        xml.required.set(false)
-        sarif.required.set(false)
-        md.required.set(false)
     }
-    jvmTarget = "11"
+    jvmTarget = "17"
 }
 
 tasks.withType<DetektCreateBaselineTask>().configureEach {
-    jvmTarget = "11"
+    jvmTarget = "17"
 }

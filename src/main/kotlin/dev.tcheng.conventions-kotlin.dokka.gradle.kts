@@ -15,6 +15,6 @@ tasks.withType<DokkaTask>().configureEach {
                 Visibility.PROTECTED,
             )
         )
-        jdkVersion.set(11)
+        jdkVersion.set(17)
     }
 }
