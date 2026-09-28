@@ -1,18 +1,16 @@
-import io.gitlab.arturbosch.detekt.Detekt
-import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import dev.detekt.gradle.Detekt
+import dev.detekt.gradle.DetektCreateBaselineTask
+import dev.detekt.gradle.extensions.DetektExtension
 
 plugins {
-    id("io.gitlab.arturbosch.detekt")
+    id("dev.detekt")
 }
-
-val detektConfig by configurations.creating
 
 dependencies {
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
+    "detektPlugins"("dev.detekt:detekt-rules-ktlint-wrapper:2.0.0-alpha.6")
 }
 
-
-detekt {
+extensions.configure<DetektExtension> {
     parallel = true
     ignoreFailures = false
     autoCorrect = true
@@ -22,9 +20,9 @@ tasks.withType<Detekt>().configureEach {
     reports {
         html.required.set(true)
     }
-    jvmTarget = "17"
+    jvmTarget.set("25")
 }
 
 tasks.withType<DetektCreateBaselineTask>().configureEach {
-    jvmTarget = "17"
+    jvmTarget.set("25")
 }

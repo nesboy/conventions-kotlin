@@ -1,20 +1,19 @@
-import org.jetbrains.dokka.DokkaConfiguration.Visibility
-import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.dokka.gradle.DokkaExtension
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 
 plugins {
     id("org.jetbrains.dokka")
 }
 
-// Configure all single-project Dokka tasks at the same time,
-// such as dokkaHtml, dokkaJavadoc and dokkaGfm.
-tasks.withType<DokkaTask>().configureEach {
+extensions.configure<DokkaExtension> {
     dokkaSourceSets.configureEach {
+        dokkaPublications.html {
+            suppressInheritedMembers.set(true)
+            failOnWarning.set(true)
+        }
+
         documentedVisibilities.set(
-            setOf(
-                Visibility.PUBLIC,
-                Visibility.PROTECTED,
-            )
+            setOf(VisibilityModifier.Public, VisibilityModifier.Protected)
         )
-        jdkVersion.set(17)
     }
 }

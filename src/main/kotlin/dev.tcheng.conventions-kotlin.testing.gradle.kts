@@ -26,11 +26,9 @@ testing {
             }
         }
 
-        val test by getting(JvmTestSuite::class)
+        val test = named<JvmTestSuite>("test")
 
-        val integTest by registering(JvmTestSuite::class) {
-            testType.set(TestSuiteType.INTEGRATION_TEST)
-
+        named<JvmTestSuite>("integTest") {
             dependencies {
                 implementation(project())
             }
